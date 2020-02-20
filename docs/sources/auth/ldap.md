@@ -3,7 +3,7 @@ title = "LDAP Authentication"
 description = "Grafana LDAP Authentication Guide "
 keywords = ["grafana", "configuration", "documentation", "ldap", "active directory"]
 type = "docs"
-aliases = ["/installation/ldap/"]
+aliases = ["/docs/grafana/latest/installation/ldap/"]
 [menu.docs]
 name = "LDAP"
 identifier = "ldap"
@@ -15,6 +15,8 @@ weight = 2
 
 The LDAP integration in Grafana allows your Grafana users to login with their LDAP credentials. You can also specify mappings between LDAP
 group memberships and Grafana Organization user roles.
+
+> [Enhanced LDAP authentication]({{< relref "../enterprise/enhanced_ldap.md" >}}) is available in [Grafana Enterprise]({{< relref "../enterprise" >}}).
 
 ## Supported LDAP Servers
 
