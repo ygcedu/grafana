@@ -106,14 +106,14 @@ func (hs *HTTPServer) setIndexViewData(c *m.ReqContext) (*dtos.IndexViewData, er
 
 	if hasEditPermissionInFoldersQuery.Result {
 		children := []*dtos.NavLink{
-			{Text: "Dashboard", Icon: "plus-circle", Url: setting.AppSubUrl + "/dashboard/new"},
+			{Text: "Dashboard", Icon: "uil uil-plus-circle", Url: setting.AppSubUrl + "/dashboard/new"},
 		}
 
 		if c.OrgRole == m.ROLE_ADMIN || c.OrgRole == m.ROLE_EDITOR {
-			children = append(children, &dtos.NavLink{Text: "Folder", SubTitle: "Create a new folder to organize your dashboards", Id: "folder", Icon: "folder-plus", Url: setting.AppSubUrl + "/dashboards/folder/new"})
+			children = append(children, &dtos.NavLink{Text: "Folder", SubTitle: "Create a new folder to organize your dashboards", Id: "folder", Icon: "uil uil-folder-plus", Url: setting.AppSubUrl + "/dashboards/folder/new"})
 		}
 
-		children = append(children, &dtos.NavLink{Text: "Import", SubTitle: "Import dashboard from file or Grafana.com", Id: "import", Icon: "upload", Url: setting.AppSubUrl + "/dashboard/import"})
+		children = append(children, &dtos.NavLink{Text: "Import", SubTitle: "Import dashboard from file or Grafana.com", Id: "import", Icon: "icon icon-import-dashboard", Url: setting.AppSubUrl + "/dashboard/import"})
 
 		data.NavTree = append(data.NavTree, &dtos.NavLink{
 			Text:       "Create",
@@ -126,18 +126,18 @@ func (hs *HTTPServer) setIndexViewData(c *m.ReqContext) (*dtos.IndexViewData, er
 	}
 
 	dashboardChildNavs := []*dtos.NavLink{
-		{Text: "Home", Id: "home", Url: setting.AppSubUrl + "/", Icon: "home", HideFromTabs: true},
+		{Text: "Home", Id: "home", Url: setting.AppSubUrl + "/", Icon: "uil uil-home", HideFromTabs: true},
 		{Text: "Divider", Divider: true, Id: "divider", HideFromTabs: true},
-		{Text: "Manage", Id: "manage-dashboards", Url: setting.AppSubUrl + "/dashboards", Icon: "sitemap"},
-		{Text: "Playlists", Id: "playlists", Url: setting.AppSubUrl + "/playlists", Icon: "presentation-play"},
-		{Text: "Snapshots", Id: "snapshots", Url: setting.AppSubUrl + "/dashboard/snapshots", Icon: "camera"},
+		{Text: "Manage", Id: "manage-dashboards", Url: setting.AppSubUrl + "/dashboards", Icon: "uil uil-sitemap"},
+		{Text: "Playlists", Id: "playlists", Url: setting.AppSubUrl + "/playlists", Icon: "uil uil-presentation-play"},
+		{Text: "Snapshots", Id: "snapshots", Url: setting.AppSubUrl + "/dashboard/snapshots", Icon: "uil uil-camera"},
 	}
 
 	data.NavTree = append(data.NavTree, &dtos.NavLink{
 		Text:       "Dashboards",
 		Id:         "dashboards",
 		SubTitle:   "Manage dashboards & folders",
-		Icon:       "dashboard",
+		Icon:       "icon icon-dashboard",
 		Url:        setting.AppSubUrl + "/",
 		SortWeight: dtos.WeightDashboard,
 		Children:   dashboardChildNavs,
@@ -148,7 +148,7 @@ func (hs *HTTPServer) setIndexViewData(c *m.ReqContext) (*dtos.IndexViewData, er
 			Text:       "Explore",
 			Id:         "explore",
 			SubTitle:   "Explore your data",
-			Icon:       "compass",
+			Icon:       "uil uil-compass",
 			SortWeight: dtos.WeightExplore,
 			Url:        setting.AppSubUrl + "/explore",
 		})
@@ -180,7 +180,7 @@ func (hs *HTTPServer) setIndexViewData(c *m.ReqContext) (*dtos.IndexViewData, er
 				Text:         "Sign out",
 				Id:           "sign-out",
 				Url:          setting.AppSubUrl + "/logout",
-				Icon:         "arrow-from-right",
+				Icon:         "uil uil-arrow-from-right",
 				Target:       "_self",
 				HideFromTabs: true,
 			})
@@ -191,15 +191,15 @@ func (hs *HTTPServer) setIndexViewData(c *m.ReqContext) (*dtos.IndexViewData, er
 
 	if setting.AlertingEnabled && (c.OrgRole == m.ROLE_ADMIN || c.OrgRole == m.ROLE_EDITOR) {
 		alertChildNavs := []*dtos.NavLink{
-			{Text: "Alert Rules", Id: "alert-list", Url: setting.AppSubUrl + "/alerting/list", Icon: "list-ul"},
-			{Text: "Notification channels", Id: "channels", Url: setting.AppSubUrl + "/alerting/notifications", Icon: "comment-alt-share"},
+			{Text: "Alert Rules", Id: "alert-list", Url: setting.AppSubUrl + "/alerting/list", Icon: "uil uil-list-ul"},
+			{Text: "Notification channels", Id: "channels", Url: setting.AppSubUrl + "/alerting/notifications", Icon: "icon icon-alert-notification"},
 		}
 
 		data.NavTree = append(data.NavTree, &dtos.NavLink{
 			Text:       "Alerting",
 			SubTitle:   "Alert rules & notifications",
 			Id:         "alerting",
-			Icon:       "bell",
+			Icon:       "uil uil-bell",
 			Url:        setting.AppSubUrl + "/alerting/list",
 			Children:   alertChildNavs,
 			SortWeight: dtos.WeightAlerting,
@@ -245,7 +245,7 @@ func (hs *HTTPServer) setIndexViewData(c *m.ReqContext) (*dtos.IndexViewData, er
 
 			if len(appLink.Children) > 0 && c.OrgRole == m.ROLE_ADMIN {
 				appLink.Children = append(appLink.Children, &dtos.NavLink{Divider: true})
-				appLink.Children = append(appLink.Children, &dtos.NavLink{Text: "Plugin Config", Icon: "cog", Url: setting.AppSubUrl + "/plugins/" + plugin.Id + "/"})
+				appLink.Children = append(appLink.Children, &dtos.NavLink{Text: "Plugin Config", Icon: "uil uil-cog", Url: setting.AppSubUrl + "/plugins/" + plugin.Id + "/"})
 			}
 
 			if len(appLink.Children) > 0 {
@@ -268,7 +268,7 @@ func (hs *HTTPServer) setIndexViewData(c *m.ReqContext) (*dtos.IndexViewData, er
 			Text:        "Users",
 			Id:          "users",
 			Description: "Manage org members",
-			Icon:        "user",
+			Icon:        "uil uil-user",
 			Url:         setting.AppSubUrl + "/org/users",
 		})
 	}
@@ -278,7 +278,7 @@ func (hs *HTTPServer) setIndexViewData(c *m.ReqContext) (*dtos.IndexViewData, er
 			Text:        "Teams",
 			Id:          "teams",
 			Description: "Manage org groups",
-			Icon:        "users-alt",
+			Icon:        "uil uil-users-alt",
 			Url:         setting.AppSubUrl + "/org/teams",
 		})
 	}
@@ -287,7 +287,7 @@ func (hs *HTTPServer) setIndexViewData(c *m.ReqContext) (*dtos.IndexViewData, er
 		Text:        "Plugins",
 		Id:          "plugins",
 		Description: "View and configure plugins",
-		Icon:        "plug",
+		Icon:        "uil uil-plug",
 		Url:         setting.AppSubUrl + "/plugins",
 	})
 
@@ -296,14 +296,14 @@ func (hs *HTTPServer) setIndexViewData(c *m.ReqContext) (*dtos.IndexViewData, er
 			Text:        "Preferences",
 			Id:          "org-settings",
 			Description: "Organization preferences",
-			Icon:        "sliders-v",
+			Icon:        "uil uil-sliders-v",
 			Url:         setting.AppSubUrl + "/org",
 		})
 		configNodes = append(configNodes, &dtos.NavLink{
 			Text:        "API Keys",
 			Id:          "apikeys",
 			Description: "Create & manage API keys",
-			Icon:        "key-skeleton",
+			Icon:        "uil uil-key-skeleton",
 			Url:         setting.AppSubUrl + "/org/apikeys",
 		})
 	}
@@ -312,7 +312,7 @@ func (hs *HTTPServer) setIndexViewData(c *m.ReqContext) (*dtos.IndexViewData, er
 		Id:         "cfg",
 		Text:       "Configuration",
 		SubTitle:   "Organization: " + c.OrgName,
-		Icon:       "cog",
+		Icon:       "uil uil-cog",
 		Url:        configNodes[0].Url,
 		SortWeight: dtos.WeightConfig,
 		Children:   configNodes,
@@ -320,15 +320,15 @@ func (hs *HTTPServer) setIndexViewData(c *m.ReqContext) (*dtos.IndexViewData, er
 
 	if c.IsGrafanaAdmin {
 		adminNavLinks := []*dtos.NavLink{
-			{Text: "Users", Id: "global-users", Url: setting.AppSubUrl + "/admin/users", Icon: "user"},
-			{Text: "Orgs", Id: "global-orgs", Url: setting.AppSubUrl + "/admin/orgs", Icon: "building"},
-			{Text: "Settings", Id: "server-settings", Url: setting.AppSubUrl + "/admin/settings", Icon: "sliders-v"},
-			{Text: "Stats", Id: "server-stats", Url: setting.AppSubUrl + "/admin/stats", Icon: "graph-bar"},
+			{Text: "Users", Id: "global-users", Url: setting.AppSubUrl + "/admin/users", Icon: "uil uil-user"},
+			{Text: "Orgs", Id: "global-orgs", Url: setting.AppSubUrl + "/admin/orgs", Icon: "uil uil-building"},
+			{Text: "Settings", Id: "server-settings", Url: setting.AppSubUrl + "/admin/settings", Icon: "uil uil-sliders-v"},
+			{Text: "Stats", Id: "server-stats", Url: setting.AppSubUrl + "/admin/stats", Icon: "uil uil-graph-bar"},
 		}
 
 		if setting.LDAPEnabled {
 			adminNavLinks = append(adminNavLinks, &dtos.NavLink{
-				Text: "LDAP", Id: "ldap", Url: setting.AppSubUrl + "/admin/ldap", Icon: "book",
+				Text: "LDAP", Id: "ldap", Url: setting.AppSubUrl + "/admin/ldap", Icon: "uil uil-book",
 			})
 		}
 
@@ -337,7 +337,7 @@ func (hs *HTTPServer) setIndexViewData(c *m.ReqContext) (*dtos.IndexViewData, er
 			SubTitle:     "Manage all users & orgs",
 			HideFromTabs: true,
 			Id:           "admin",
-			Icon:         "shield",
+			Icon:         "uil uil-shield",
 			Url:          setting.AppSubUrl + "/admin/users",
 			SortWeight:   dtos.WeightAdmin,
 			Children:     adminNavLinks,
@@ -349,13 +349,13 @@ func (hs *HTTPServer) setIndexViewData(c *m.ReqContext) (*dtos.IndexViewData, er
 		SubTitle:     fmt.Sprintf(`%s v%s (%s)`, setting.ApplicationName, setting.BuildVersion, setting.BuildCommit),
 		Id:           "help",
 		Url:          "#",
-		Icon:         "question-circle",
+		Icon:         "uil uil-question-circle",
 		HideFromMenu: true,
 		SortWeight:   dtos.WeightHelp,
 		Children: []*dtos.NavLink{
-			{Text: "Keyboard shortcuts", Url: "/shortcuts", Icon: "keyboard", Target: "_self"},
-			{Text: "Community site", Url: "http://community.grafana.com", Icon: "comment", Target: "_blank"},
-			{Text: "Documentation", Url: "http://docs.grafana.org", Icon: "file", Target: "_blank"},
+			{Text: "Keyboard shortcuts", Url: "/shortcuts", Icon: "uil uil-keyboard", Target: "_self"},
+			{Text: "Community site", Url: "http://community.grafana.com", Icon: "uil uil-comment", Target: "_blank"},
+			{Text: "Documentation", Url: "http://docs.grafana.org", Icon: "uil uil-file", Target: "_blank"},
 		},
 	})
 

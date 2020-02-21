@@ -192,7 +192,7 @@ class UnThemedTimePicker extends PureComponent<Props, State> {
         <div className="time-picker-buttons">
           {hasAbsolute && (
             <button className="btn navbar-button navbar-button--tight" onClick={onMoveBackward}>
-              <Unicon name="angle-left" />
+              <Unicon name="uil uil-angle-left" />
             </button>
           )}
           <ButtonSelect
@@ -214,13 +214,13 @@ class UnThemedTimePicker extends PureComponent<Props, State> {
 
           {hasAbsolute && (
             <button className="btn navbar-button navbar-button--tight" onClick={onMoveForward}>
-              <Unicon name="angle-right" />
+              <Unicon name="uil uil-angle-right" />
             </button>
           )}
 
           <Tooltip content={defaultZoomOutTooltip} placement="bottom">
             <button className="btn navbar-button navbar-button--zoom" onClick={onZoom}>
-              <Unicon name="search-minus" />
+              <Unicon name="uil uil-search-minus" />
             </button>
           </Tooltip>
 

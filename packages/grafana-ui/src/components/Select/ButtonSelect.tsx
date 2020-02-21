@@ -24,8 +24,8 @@ const ButtonComponent = (buttonProps: ButtonComponentProps) => (props: any) => {
       <div className="select-button">
         {iconClass && <i className={`select-button-icon ${iconClass}`} />}
         <span className="select-button-value">{label ? label : ''}</span>
-        {!props.menuIsOpen && <Unicon name="angle-down" />}
-        {props.menuIsOpen && <Unicon name="angle-up" />}
+        {!props.menuIsOpen && <Unicon name="uil uil-angle-down" />}
+        {props.menuIsOpen && <Unicon name="uil uil-angle-up" />}
       </div>
     </div>
   );

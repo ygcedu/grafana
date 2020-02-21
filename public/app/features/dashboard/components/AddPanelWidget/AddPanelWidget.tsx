@@ -158,16 +158,16 @@ export class AddPanelWidget extends React.Component<Props, State> {
       <div className="panel-container add-panel-widget-container">
         <div className="add-panel-widget">
           <div className="add-panel-widget__header grid-drag-handle">
-            <Unicon name="focus-add" />
+            <Unicon name="icon icon-add-panel" />
             <span className="add-panel-widget__title">New Panel</span>
             <button className="add-panel-widget__close" onClick={this.handleCloseAddPanel}>
-              <Unicon name="times" />
+              <Unicon name="uil uil-times" />
             </button>
           </div>
           <div className="add-panel-widget__btn-container">
             <div className="add-panel-widget__create">
-              {this.renderOptionLink('search', 'Add Query', this.onCreateNewPanel)}
-              {this.renderOptionLink('chart-line', 'Choose Visualization', () =>
+              {this.renderOptionLink('uil uil-search', 'Add Query', this.onCreateNewPanel)}
+              {this.renderOptionLink('icon icon-visualisation', 'Choose Visualization', () =>
                 this.onCreateNewPanel('visualization')
               )}
             </div>

@@ -38,7 +38,7 @@ export const Alert: FC<AlertProps> = ({ title, buttonText, onButtonClick, onRemo
     <div className="alert-container">
       <div className={alertClass}>
         <div className="alert-icon">
-          <Unicon name={getIconFromSeverity(severity)} />
+          <Unicon name={`uil uil-${getIconFromSeverity(severity)}`} />
         </div>
         <div className="alert-body">
           <div className="alert-title">{title}</div>
@@ -47,7 +47,7 @@ export const Alert: FC<AlertProps> = ({ title, buttonText, onButtonClick, onRemo
         {/* If onRemove is specified , giving preference to onRemove */}
         {onRemove && (
           <button type="button" className="alert-close" onClick={onRemove}>
-            <Unicon name="times" />
+            <Unicon name="uil uil-times" />
           </button>
         )}
         {onButtonClick && (

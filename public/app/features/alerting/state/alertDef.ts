@@ -94,7 +94,7 @@ function getStateDisplayModel(state: string) {
     case 'paused': {
       return {
         text: 'PAUSED',
-        iconClass: 'uil uil-pause',
+        iconClass: 'icon icon-pause',
         stateClass: 'alert-state-paused',
       };
     }

@@ -15,7 +15,7 @@ export const PanelHeaderMenuItem: FC<Props & PanelMenuItem> = props => {
   ) : (
     <li className={isSubMenu ? 'dropdown-submenu' : null}>
       <a onClick={props.onClick}>
-        {props.iconClassName && <Unicon name={props.iconClassName} />}
+        {props.iconClassName && <Unicon name={`uil uil-${props.iconClassName}`} />}
         <span
           className="dropdown-item-text"
           aria-label={e2e.pages.Dashboard.Panels.Panel.selectors.headerItems(props.text)}

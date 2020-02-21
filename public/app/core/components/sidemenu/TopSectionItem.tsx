@@ -12,7 +12,7 @@ const TopSectionItem: FC<Props> = props => {
     <div className="sidemenu-item dropdown">
       <a className="sidemenu-link" href={link.url} target={link.target}>
         <span className="icon-circle sidemenu-icon">
-          <Unicon name={link.icon} />
+          <Unicon name={`uil uil-${link.icon}`} />
           {link.img && <img src={link.img} />}
         </span>
       </a>

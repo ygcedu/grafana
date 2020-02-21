@@ -184,14 +184,14 @@ export class UnConnectedExploreToolbar extends PureComponent<Props> {
             <div className="explore-toolbar-header-title">
               {exploreId === 'left' && (
                 <span className="navbar-page-btn">
-                  <Unicon name="compass" />
+                  <Unicon name="uil uil-compass" />
                   Explore
                 </span>
               )}
             </div>
             {splitted && (
               <a className="explore-toolbar-header-close" onClick={() => closeSplit(exploreId)}>
-                <Unicon name="times" />
+                <Unicon name="uil uil-times" />
               </a>
             )}
           </div>
@@ -243,7 +243,7 @@ export class UnConnectedExploreToolbar extends PureComponent<Props> {
               <div className="explore-toolbar-content-item">
                 <Tooltip content={'Return to panel'} placement="bottom">
                   <button className={panelReturnClasses} onClick={() => this.returnToPanel()}>
-                    <Unicon name="arrow-left" />
+                    <Unicon name="uil uil-arrow-left" />
                   </button>
                 </Tooltip>
                 {originDashboardIsEditable && (

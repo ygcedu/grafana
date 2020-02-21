@@ -43,7 +43,7 @@ class BottomNavLinks extends PureComponent<Props, State> {
       <div className="sidemenu-item dropdown dropup">
         <a href={link.url} className="sidemenu-link" target={link.target}>
           <span className="icon-circle sidemenu-icon">
-            {link.icon && <Unicon name={link.icon} />}
+            {link.icon && <Unicon name={`uil uil-${link.icon}`} />}
             {link.img && <img src={link.img} />}
           </span>
         </a>
@@ -61,7 +61,7 @@ class BottomNavLinks extends PureComponent<Props, State> {
                   <div className="sidemenu-org-switcher__org-current">Current Org:</div>
                 </div>
                 <div className="sidemenu-org-switcher__switch">
-                  <Unicon name="arrow-random" />
+                  <Unicon name="uil uil-arrow-random" />
                   Switch
                 </div>
               </a>
@@ -76,7 +76,7 @@ class BottomNavLinks extends PureComponent<Props, State> {
                 return (
                   <li key={`${child.text}-${index}`}>
                     <a href={child.url} target={child.target} onClick={event => this.itemClicked(event, child)}>
-                      {child.icon && <Unicon name={child.icon} />}
+                      {child.icon && <Unicon name={`uil uil-${child.icon}`} />}
                       {child.text}
                     </a>
                   </li>

@@ -31,7 +31,7 @@ export function QueryRowActions(props: Props) {
             className="gf-form-label gf-form-label--btn"
             onClick={onClickToggleEditorMode}
           >
-            <Unicon name="pen" />
+            <Unicon name="uil uil-pen" />
           </button>
         </div>
       )}
@@ -42,17 +42,17 @@ export function QueryRowActions(props: Props) {
           onClick={onClickToggleDisabled}
           title="Disable/enable query"
         >
-          <Unicon name={isDisabled ? 'eye-slash' : 'eye'} />
+          <Unicon name={isDisabled ? 'uil uil-eye-slash' : 'uil uil-eye'} />
         </button>
       </div>
       <div className="gf-form">
         <button className="gf-form-label gf-form-label--btn" onClick={onClickAddButton} title="Add query">
-          <Unicon name="plus" />
+          <Unicon name="uil uil-plus" />
         </button>
       </div>
       <div className="gf-form">
         <button className="gf-form-label gf-form-label--btn" onClick={onClickRemoveButton} title="Remove query">
-          <Unicon name="minus" />
+          <Unicon name="uil uil-minus" />
         </button>
       </div>
     </div>

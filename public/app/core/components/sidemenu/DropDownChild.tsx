@@ -12,7 +12,7 @@ const DropDownChild: FC<Props> = props => {
   return (
     <li className={listItemClassName}>
       <a href={child.url}>
-        {child.icon && <Unicon name={child.icon} />}
+        {child.icon && <Unicon name={`uil uil-${child.icon}`} />}
         {child.text}
       </a>
     </li>

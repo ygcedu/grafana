@@ -24,7 +24,7 @@ const getIconStyles = stylesFactory(() => {
 
 export const Unicon: React.FC<UniconProps> = ({ name, className }) => {
   const styles = getIconStyles();
-  return <i className={cx(styles.icon, 'uil', `uil-${name}`, className)} />;
+  return <i className={cx(styles.icon, name, className)} />;
 };
 
 Unicon.displayName = 'Unicon';

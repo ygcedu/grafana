@@ -126,7 +126,7 @@ export class DashNav extends PureComponent<Props> {
       <>
         <div>
           <div className="navbar-page-btn">
-            {!this.isInFullscreenOrSettings && <Unicon name="dashboard" />}
+            {!this.isInFullscreenOrSettings && <Unicon name="uil uil-dashboard" />}
             {haveFolder && (
               <>
                 <a className="navbar-page-btn__folder" onClick={this.onFolderNameClick}>
@@ -163,7 +163,7 @@ export class DashNav extends PureComponent<Props> {
             onClick={this.onClose}
             aria-label={e2e.pages.Dashboard.Toolbar.selectors.backArrow}
           >
-            <Unicon name="arrow-left" />
+            <Unicon name="uil uil-arrow-left" />
           </button>
         </Tooltip>
       </div>
@@ -205,7 +205,12 @@ export class DashNav extends PureComponent<Props> {
 
         <div className="navbar-buttons navbar-buttons--actions">
           {canSave && (
-            <DashNavButton tooltip="Add panel" classSuffix="add-panel" icon="focus-add" onClick={onAddPanel} />
+            <DashNavButton
+              tooltip="Add panel"
+              classSuffix="add-panel"
+              icon="icon icon-add-panel"
+              onClick={onAddPanel}
+            />
           )}
 
           {canStar && (
