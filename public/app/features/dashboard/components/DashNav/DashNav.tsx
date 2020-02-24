@@ -185,19 +185,19 @@ export class DashNav extends PureComponent<Props> {
             <DashNavButton
               tooltip="Go to previous dashboard"
               classSuffix="tight"
-              icon="step-backward"
+              icon="uil uil-step-backward"
               onClick={this.onPlaylistPrev}
             />
             <DashNavButton
               tooltip="Stop playlist"
               classSuffix="tight"
-              icon="square-shape"
+              icon="uil uil-square-shape"
               onClick={this.onPlaylistStop}
             />
             <DashNavButton
               tooltip="Go to next dashboard"
               classSuffix="tight"
-              icon="forward"
+              icon="uil uil-forward"
               onClick={this.onPlaylistNext}
             />
           </div>
@@ -217,24 +217,34 @@ export class DashNav extends PureComponent<Props> {
             <DashNavButton
               tooltip="Mark as favorite"
               classSuffix="star"
-              icon={`${isStarred ? 'star-half-alt' : 'star'}`}
+              icon={`${isStarred ? 'uil uil-favorite' : 'uil uil-star'}`}
               onClick={this.onStarDashboard}
             />
           )}
 
           {canShare && (
-            <DashNavButton tooltip="Share dashboard" classSuffix="share" icon="share" onClick={this.onOpenShare} />
+            <DashNavButton
+              tooltip="Share dashboard"
+              classSuffix="share"
+              icon="uil uil-share"
+              onClick={this.onOpenShare}
+            />
           )}
 
           {canSave && (
-            <DashNavButton tooltip="Save dashboard" classSuffix="save" icon="file-check" onClick={this.onSave} />
+            <DashNavButton
+              tooltip="Save dashboard"
+              classSuffix="save"
+              icon="uil uil-file-check"
+              onClick={this.onSave}
+            />
           )}
 
           {snapshotUrl && (
             <DashNavButton
               tooltip="Open original dashboard"
               classSuffix="snapshot-origin"
-              icon="link-alt"
+              icon="uil uil-link-alt"
               href={snapshotUrl}
             />
           )}
@@ -243,14 +253,19 @@ export class DashNav extends PureComponent<Props> {
             <DashNavButton
               tooltip="Dashboard settings"
               classSuffix="settings"
-              icon="cog"
+              icon="icon icon-setting"
               onClick={this.onOpenSettings}
             />
           )}
         </div>
 
         <div className="navbar-buttons navbar-buttons--tv">
-          <DashNavButton tooltip="Cycle view mode" classSuffix="tv" icon="monitor" onClick={this.onToggleTVMode} />
+          <DashNavButton
+            tooltip="Cycle view mode"
+            classSuffix="tv"
+            icon="uil uil-monitor"
+            onClick={this.onToggleTVMode}
+          />
         </div>
 
         {!dashboard.timepicker.hidden && (

@@ -22,7 +22,7 @@ export const DashNavButton: FunctionComponent<Props> = ({ icon, tooltip, classSu
           onClick={onClick}
           aria-label={e2e.pages.Dashboard.Toolbar.selectors.toolbarItems(tooltip)}
         >
-          <Unicon name={`uil uil-${icon}`} />
+          <Unicon name={icon} />
         </button>
       </Tooltip>
     );

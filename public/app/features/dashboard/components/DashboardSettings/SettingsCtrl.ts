@@ -65,22 +65,22 @@ export class SettingsCtrl {
       this.sections.push({
         title: 'General',
         id: 'settings',
-        icon: 'gicon gicon-preferences',
+        icon: 'icon icon-setting',
       });
       this.sections.push({
         title: 'Annotations',
         id: 'annotations',
-        icon: 'gicon gicon-annotation',
+        icon: 'uil uil-comment-alt-plus',
       });
       this.sections.push({
         title: 'Variables',
         id: 'templating',
-        icon: 'gicon gicon-variable',
+        icon: 'icon icon-mathematical-x-symbol',
       });
       this.sections.push({
         title: 'Links',
         id: 'links',
-        icon: 'gicon gicon-link',
+        icon: 'uil uil-link-alt',
       });
     }
 
@@ -88,7 +88,7 @@ export class SettingsCtrl {
       this.sections.push({
         title: 'Versions',
         id: 'versions',
-        icon: 'fa fa-fw fa-history',
+        icon: 'uil uil-history',
       });
     }
 
@@ -96,7 +96,7 @@ export class SettingsCtrl {
       this.sections.push({
         title: 'Permissions',
         id: 'permissions',
-        icon: 'fa fa-fw fa-lock',
+        icon: 'uil uil-lock',
       });
     }
 
@@ -111,7 +111,7 @@ export class SettingsCtrl {
     this.sections.push({
       title: 'JSON Model',
       id: 'dashboard_json',
-      icon: 'gicon gicon-json',
+      icon: 'icon icon-json-code-icon',
     });
 
     const params = this.$location.search();
@@ -204,7 +204,7 @@ export class SettingsCtrl {
           File path: ${this.dashboard.meta.provisionedExternalId}
         `,
         text2htmlBind: true,
-        icon: 'fa-trash',
+        icon: 'uil uil-trash-alt',
         noText: 'OK',
       });
       return;
@@ -223,7 +223,7 @@ export class SettingsCtrl {
       title: 'Delete',
       text: 'Do you want to delete this dashboard?',
       text2: text2,
-      icon: 'fa-trash',
+      icon: 'uil uil-trash-alt',
       confirmText: confirmText,
       yesText: 'Delete',
       onConfirm: () => {

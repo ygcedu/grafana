@@ -75,16 +75,8 @@
     @include left-brand-border-gradient();
     background: $page-bg;
   }
-
-  .gicon {
-    margin-bottom: 2px;
-    margin-right: 4px;
-  }
-
-  .fa {
-    font-size: 17px;
-    width: 16px;
-    margin-right: 4px;
+  .uil:before {
+    margin: 0 !important;
   }
 }
 

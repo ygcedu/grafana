@@ -162,7 +162,7 @@ export class SearchSrv {
             title: hit.folderTitle,
             url: hit.folderUrl,
             items: [],
-            icon: 'uil uil-folder-network',
+            icon: 'icon icon-folder-open',
             toggle: this.toggleFolder.bind(this),
             score: _.keys(sections).length,
           };
@@ -171,7 +171,7 @@ export class SearchSrv {
             id: 0,
             title: 'General',
             items: [],
-            icon: 'uil uil-folder-network',
+            icon: 'icon icon-folder-open',
             toggle: this.toggleFolder.bind(this),
             score: _.keys(sections).length,
           };
