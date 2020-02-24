@@ -26,9 +26,9 @@ class AlertRuleItem extends PureComponent<Props> {
     const { rule, onTogglePause } = this.props;
 
     const iconClassName = classNames({
-      uil: true,
-      'uil-play': rule.state === 'paused',
-      'icon-pause': rule.state !== 'paused',
+      uil: false,
+      'uil uil-play': rule.state === 'paused',
+      'icon icon-pause': rule.state !== 'paused',
     });
 
     const ruleUrl = `${rule.url}?panelId=${rule.panelId}&fullscreen&edit&tab=alert`;
@@ -57,10 +57,10 @@ class AlertRuleItem extends PureComponent<Props> {
             title="Pausing an alert rule prevents it from executing"
             onClick={onTogglePause}
           >
-            <Unicon name={`uil uil-${iconClassName}`} />
+            <Unicon name={iconClassName} />
           </button>
           <a className="btn btn-small btn-inverse alert-list__btn width-2" href={ruleUrl} title="Edit alert rule">
-            <Unicon name="uil uil-cog" />
+            <Unicon name="icon icon-setting" />
           </a>
         </div>
       </li>
