@@ -126,7 +126,7 @@ export class DashNav extends PureComponent<Props> {
       <>
         <div>
           <div className="navbar-page-btn">
-            {!this.isInFullscreenOrSettings && <Unicon name="uil uil-dashboard" />}
+            {!this.isInFullscreenOrSettings && <Unicon name="icon icon-dashboard" />}
             {haveFolder && (
               <>
                 <a className="navbar-page-btn__folder" onClick={this.onFolderNameClick}>

@@ -62,7 +62,7 @@ export class GettingStarted extends PureComponent<PanelProps, State> {
       {
         title: 'Create your first dashboard',
         cta: 'New dashboard',
-        icon: 'gicon gicon-dashboard',
+        icon: 'icon icon-dashboard',
         href: 'dashboard/new?gettingstarted',
         check: () => {
           return getBackendSrv()

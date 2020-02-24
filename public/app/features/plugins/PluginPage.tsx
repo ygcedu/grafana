@@ -362,7 +362,7 @@ function getPluginTabsNav(
       if (plugin.angularConfigCtrl) {
         pages.push({
           text: 'Config',
-          icon: 'gicon gicon-cog',
+          icon: 'icon icon-cog',
           url: `${appSubUrl}${path}?page=${PAGE_ID_CONFIG_CTRL}`,
           id: PAGE_ID_CONFIG_CTRL,
         });
