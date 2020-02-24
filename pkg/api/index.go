@@ -118,7 +118,7 @@ func (hs *HTTPServer) setIndexViewData(c *m.ReqContext) (*dtos.IndexViewData, er
 		data.NavTree = append(data.NavTree, &dtos.NavLink{
 			Text:       "Create",
 			Id:         "create",
-			Icon:       "plus",
+			Icon:       "uil uil-plus",
 			Url:        setting.AppSubUrl + "/dashboard/new",
 			Children:   children,
 			SortWeight: dtos.WeightCreate,
@@ -245,7 +245,7 @@ func (hs *HTTPServer) setIndexViewData(c *m.ReqContext) (*dtos.IndexViewData, er
 
 			if len(appLink.Children) > 0 && c.OrgRole == m.ROLE_ADMIN {
 				appLink.Children = append(appLink.Children, &dtos.NavLink{Divider: true})
-				appLink.Children = append(appLink.Children, &dtos.NavLink{Text: "Plugin Config", Icon: "uil uil-cog", Url: setting.AppSubUrl + "/plugins/" + plugin.Id + "/"})
+				appLink.Children = append(appLink.Children, &dtos.NavLink{Text: "Plugin Config", Icon: "icon icon-setting", Url: setting.AppSubUrl + "/plugins/" + plugin.Id + "/"})
 			}
 
 			if len(appLink.Children) > 0 {
@@ -312,7 +312,7 @@ func (hs *HTTPServer) setIndexViewData(c *m.ReqContext) (*dtos.IndexViewData, er
 		Id:         "cfg",
 		Text:       "Configuration",
 		SubTitle:   "Organization: " + c.OrgName,
-		Icon:       "uil uil-cog",
+		Icon:       "icon icon-setting",
 		Url:        configNodes[0].Url,
 		SortWeight: dtos.WeightConfig,
 		Children:   configNodes,
