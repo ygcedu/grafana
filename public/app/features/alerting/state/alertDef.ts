@@ -80,7 +80,7 @@ function getStateDisplayModel(state: string) {
     case 'alerting': {
       return {
         text: 'ALERTING',
-        iconClass: 'uil uil-heartbeat',
+        iconClass: 'icon icon-broken-hear-alert',
         stateClass: 'alert-state-critical',
       };
     }
