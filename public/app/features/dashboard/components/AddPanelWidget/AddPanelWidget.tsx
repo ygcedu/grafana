@@ -14,6 +14,7 @@ import { DashboardModel, PanelModel } from '../../state';
 import { LS_PANEL_COPY_KEY } from 'app/core/constants';
 //Components
 import { Unicon } from '@grafana/ui/src/components/Icon/Unicon';
+import icon from './add_panel_icon.svg';
 
 export type PanelPluginInfo = { id: any; defaults: { gridPos: { w: any; h: any }; title: any } };
 
@@ -158,7 +159,7 @@ export class AddPanelWidget extends React.Component<Props, State> {
       <div className="panel-container add-panel-widget-container">
         <div className="add-panel-widget">
           <div className="add-panel-widget__header grid-drag-handle">
-            <Unicon name="icon icon-add-panel" />
+            <img style={{ margin: '0 8px' }} src={icon} />
             <span className="add-panel-widget__title">New Panel</span>
             <button className="add-panel-widget__close" onClick={this.handleCloseAddPanel}>
               <Unicon name="uil uil-times" />

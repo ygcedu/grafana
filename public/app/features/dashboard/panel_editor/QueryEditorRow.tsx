@@ -243,20 +243,20 @@ export class QueryEditorRow extends PureComponent<Props, State> {
               </button>
             )}
             <button className="query-editor-row__action" onClick={() => this.props.onMoveQuery(query, 1)}>
-              <i className="fa fa-fw fa-arrow-down" />
+              <i className="uil uil-arrow-down" />
             </button>
             <button className="query-editor-row__action" onClick={() => this.props.onMoveQuery(query, -1)}>
-              <i className="fa fa-fw fa-arrow-up" />
+              <i className="uil uil-arrow-up" />
             </button>
             <button className="query-editor-row__action" onClick={this.onCopyQuery} title="Duplicate query">
-              <i className="fa fa-fw fa-copy" />
+              <i className="uil uil-copy" />
             </button>
             <button className="query-editor-row__action" onClick={this.onDisableQuery} title="Disable/enable query">
-              {isDisabled && <i className="fa fa-fw fa-eye-slash" />}
-              {!isDisabled && <i className="fa fa-fw fa-eye" />}
+              {isDisabled && <i className="uil uil-eye-slash" />}
+              {!isDisabled && <i className="uil uil-eye" />}
             </button>
             <button className="query-editor-row__action" onClick={this.onRemoveQuery} title="Remove query">
-              <i className="fa fa-fw fa-trash" />
+              <i className="uil uil-trash-alt" />
             </button>
           </div>
         </div>

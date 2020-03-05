@@ -3,6 +3,9 @@ import classNames from 'classnames';
 import appEvents from 'app/core/app_events';
 import { NavModel, NavModelItem, NavModelBreadcrumb } from '@grafana/data';
 import { CoreEvents } from 'app/types';
+import triangle from './triangle.svg';
+import briefcase from './briefcase.svg';
+import box from './box.svg';
 
 export interface Props {
   model: NavModel;
@@ -120,7 +123,13 @@ export default class PageHeader extends React.Component<Props, any> {
     return (
       <div className="page-header__inner">
         <span className="page-header__logo">
-          {main.icon && <i className={`page-header__icon ${main.icon}`} />}
+          {main.icon === 'uil uil-bell' && <img src={triangle} style={{ height: '60px', marginTop: '8px' }} />}
+          {main.icon === 'icon icon-setting' && <img src={briefcase} style={{ height: '60px', marginTop: '8px' }} />}
+          {main.icon === 'uil uil-shield' && <img src={box} style={{ height: '60px', marginTop: '8px' }} />}
+          {main.icon &&
+            main.icon !== 'uil uil-bell' &&
+            main.icon !== 'uil uil-shield' &&
+            main.icon !== 'icon icon-setting' && <i className={`page-header__icon ${main.icon}`} />}
           {main.img && <img className="page-header__img" src={main.img} />}
         </span>
 
