@@ -11,9 +11,10 @@ import sys
 import re
 
 
-def _get_milestone(repo, title):
+def _get_milestone(repo, milestone):
+    re_milestone = re.compile('(Milestone )?{}'.format(milestone))
     for milestone in repo.get_milestones(state='all'):
-        if milestone.title == title:
+        if re_milestone.fullmatch(milestone.title) is not None:
             return milestone
 
     raise Exception('Milestone not found')
@@ -28,10 +29,10 @@ def _get_label(repo):
 
 def _main():
     try:
-        version, pr_id, token = sys.argv[1:]
+        milestone, pr_id, token = sys.argv[1:]
     except ValueError:
         sys.stderr.write(
-            'Please provide the version, the cherry-pick PR ID and a valid GitHub access token\n'
+            'Please provide the milestone, the cherry-pick PR ID and a valid GitHub access token\n'
         )
         sys.exit(1)
     pr_id = int(pr_id)
@@ -39,7 +40,7 @@ def _main():
     g = Github(token)
     repo = g.get_repo('grafana/grafana')
 
-    milestone = _get_milestone(repo, version)
+    milestone = _get_milestone(repo, milestone)
     label = _get_label(repo)
 
     pr_commits = {}
