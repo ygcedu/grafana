@@ -49,7 +49,7 @@ def _main():
             continue
 
         pr = repo.get_pull(issue.number)
-        print('Got PR #{} ({})'.format(issue.number, issue.title))
+        print('Got PR #{} ({}) - merge commit {}'.format(issue.number, issue.title, pr.merge_commit_sha))
         assert pr.merge_commit_sha
         pr_commits[pr.merge_commit_sha] = pr
     print('Found {} PRs'.format(len(pr_commits)))
@@ -88,8 +88,8 @@ def _main():
             commit.sha
         ))
     for sha in uncorrelated_commits:
-        sys.stderr.write(
-                '* Couldn\'t correlate following commit from the cherry-pick PR: {}\n'.format(source_sha)
+        print(
+                '* Couldn\'t correlate following commit from the cherry-pick PR: {}\n'.format(sha)
         )
     if pr_commits:
         sys.stderr.write('* Some PRs were not cherry-picked: {}\n'.format([pr.title for pr in pr_commits.values()]))
