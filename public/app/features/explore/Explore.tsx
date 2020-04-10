@@ -8,6 +8,7 @@ import memoizeOne from 'memoize-one';
 
 // Services & Utils
 import store from 'app/core/store';
+import config from 'app/core/config';
 
 // Components
 import { ErrorBoundaryAlert, stylesFactory } from '@grafana/ui';
@@ -298,6 +299,10 @@ export class Explore extends React.PureComponent<ExploreProps, ExploreState> {
     const StartPage = datasourceInstance?.components?.ExploreStartPage;
     const showStartPage = !queryResponse || queryResponse.state === LoadingState.NotStarted;
 
+    // TEMP: Remove for 7.0
+    const cloudwatchLogsDisabled =
+      datasourceInstance?.meta?.id === 'cloudwatch' && !config.featureToggles.cloudwatchLogs;
+
     // gets an error without a refID, so non-query-row-related error, like a connection error
     const queryErrors = queryResponse.error ? [queryResponse.error] : undefined;
     const queryError = getFirstNonQueryRowSpecificError(queryErrors);
@@ -362,7 +367,7 @@ export class Explore extends React.PureComponent<ExploreProps, ExploreState> {
                           {mode === ExploreMode.Metrics && (
                             <TableContainer width={width} exploreId={exploreId} onClickCell={this.onClickFilterLabel} />
                           )}
-                          {mode === ExploreMode.Logs && (
+                          {mode === ExploreMode.Logs && !cloudwatchLogsDisabled && (
                             <LogsContainer
                               width={width}
                               exploreId={exploreId}
