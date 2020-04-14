@@ -33,7 +33,7 @@ func TestDSRouteRule(t *testing.T) {
 				Routes: []*plugins.AppPluginRoute{
 					{
 						Path:    "api/v4/",
-						Url:     "https://www.google.com",
+						URL:     "https://www.google.com",
 						ReqRole: models.ROLE_EDITOR,
 						Headers: []plugins.AppPluginRouteHeader{
 							{Name: "x-header", Content: "my secret {{.SecureJsonData.key}}"},
@@ -41,7 +41,7 @@ func TestDSRouteRule(t *testing.T) {
 					},
 					{
 						Path:    "api/admin",
-						Url:     "https://www.google.com",
+						URL:     "https://www.google.com",
 						ReqRole: models.ROLE_ADMIN,
 						Headers: []plugins.AppPluginRouteHeader{
 							{Name: "x-header", Content: "my secret {{.SecureJsonData.key}}"},
@@ -49,15 +49,15 @@ func TestDSRouteRule(t *testing.T) {
 					},
 					{
 						Path: "api/anon",
-						Url:  "https://www.google.com",
+						URL:  "https://www.google.com",
 						Headers: []plugins.AppPluginRouteHeader{
 							{Name: "x-header", Content: "my secret {{.SecureJsonData.key}}"},
 						},
 					},
 					{
 						Path: "api/common",
-						Url:  "{{.JsonData.dynamicUrl}}",
-						Params: []plugins.AppPluginRouteURLParams{
+						URL:  "{{.JsonData.dynamicUrl}}",
+						URLParams: []plugins.AppPluginRouteURLParams{
 							{Name: "{{.JsonData.queryParam}}", Content: "{{.SecureJsonData.key}}"},
 						},
 						Headers: []plugins.AppPluginRouteHeader{
@@ -138,7 +138,7 @@ func TestDSRouteRule(t *testing.T) {
 				Routes: []*plugins.AppPluginRoute{
 					{
 						Path: "pathwithtoken1",
-						Url:  "https://api.nr1.io/some/path",
+						URL:  "https://api.nr1.io/some/path",
 						TokenAuth: &plugins.JwtTokenAuth{
 							Url: "https://login.server.com/{{.JsonData.tenantId}}/oauth2/token",
 							Params: map[string]string{
@@ -151,7 +151,7 @@ func TestDSRouteRule(t *testing.T) {
 					},
 					{
 						Path: "pathwithtoken2",
-						Url:  "https://api.nr2.io/some/path",
+						URL:  "https://api.nr2.io/some/path",
 						TokenAuth: &plugins.JwtTokenAuth{
 							Url: "https://login.server.com/{{.JsonData.tenantId}}/oauth2/token",
 							Params: map[string]string{
