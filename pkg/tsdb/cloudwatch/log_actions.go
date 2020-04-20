@@ -74,7 +74,6 @@ func (e *CloudWatchExecutor) executeLogAction(ctx context.Context, queryContext 
 	defaultRegion := e.DataSource.JsonData.Get("defaultRegion").MustString()
 	region := parameters.Get("region").MustString(defaultRegion)
 	logsClient, er := e.getLogsClient(region)
-
 	if er != nil {
 		return nil, er
 	}
@@ -112,13 +111,13 @@ func (e *CloudWatchExecutor) handleGetLogEvents(ctx context.Context, logsClient 
 
 	logGroupName, err := parameters.Get("logGroupName").String()
 	if err != nil {
-		return nil, fmt.Errorf("Error: Parameter 'logGroupName' is required")
+		return nil, fmt.Errorf("error: Parameter 'logGroupName' is required")
 	}
 	queryRequest.SetLogGroupName(logGroupName)
 
 	logStreamName, err := parameters.Get("logStreamName").String()
 	if err != nil {
-		return nil, fmt.Errorf("Error: Parameter 'logStream' is required")
+		return nil, fmt.Errorf("error: Parameter 'logStreamName' is required")
 	}
 	queryRequest.SetLogStreamName(logStreamName)
 
@@ -198,7 +197,7 @@ func (e *CloudWatchExecutor) executeStartQuery(ctx context.Context, logsClient c
 	}
 
 	if !startTime.Before(endTime) {
-		return nil, fmt.Errorf("Invalid time range: Start time must be before end time")
+		return nil, fmt.Errorf("invalid time range: Start time must be before end time")
 	}
 
 	startQueryInput := &cloudwatchlogs.StartQueryInput{
@@ -238,7 +237,7 @@ func (e *CloudWatchExecutor) executeStopQuery(ctx context.Context, logsClient cl
 
 	response, err := logsClient.StopQueryWithContext(ctx, queryInput)
 	if err != nil {
-		awsErr, _ := err.(awserr.Error)
+		awsErr := err.(awserr.Error)
 		if awsErr.Code() == "InvalidParameterException" {
 			response = &cloudwatchlogs.StopQueryOutput{Success: aws.Bool(false)}
 			err = nil
@@ -276,7 +275,6 @@ func (e *CloudWatchExecutor) handleGetQueryResults(ctx context.Context, logsClie
 	}
 
 	dataFrame, err := logsResultsToDataframes(getQueryResultsOutput)
-
 	if err != nil {
 		return nil, err
 	}

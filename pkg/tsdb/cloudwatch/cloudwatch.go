@@ -47,7 +47,6 @@ func (e *CloudWatchExecutor) getLogsClient(region string) (*cloudwatchlogs.Cloud
 
 	dsInfo := retrieveDsInfo(e.DataSource, region)
 	newLogsClient, err := retrieveLogsClient(dsInfo)
-
 	if err != nil {
 		return nil, err
 	}
@@ -60,7 +59,6 @@ func (e *CloudWatchExecutor) getLogsClient(region string) (*cloudwatchlogs.Cloud
 func NewCloudWatchExecutor(datasource *models.DataSource) (tsdb.TsdbQueryEndpoint, error) {
 	dsInfo := retrieveDsInfo(datasource, "default")
 	defaultLogsClient, err := retrieveLogsClient(dsInfo)
-
 	if err != nil {
 		return nil, err
 	}
@@ -86,12 +84,11 @@ func init() {
 }
 
 func (e *CloudWatchExecutor) AlertQuery(logsClient *cloudwatchlogs.CloudWatchLogs, ctx context.Context, queryContext *tsdb.TsdbQuery) (*cloudwatchlogs.GetQueryResultsOutput, error) {
-	const MaxAttempts = 5
-	const PollPeriod = 500 * time.Millisecond
+	const maxAttempts = 5
+	const pollPeriod = 500 * time.Millisecond
 
 	queryParams := queryContext.Queries[0].Model
 	startQueryOutput, err := e.executeStartQuery(ctx, logsClient, queryParams, queryContext.TimeRange)
-
 	if err != nil {
 		return nil, err
 	}
@@ -217,13 +214,15 @@ func queryResultsToTimeseries(results *cloudwatchlogs.GetQueryResultsOutput) (ts
 	timestampFormat := "2006-01-02 15:04:05.000"
 	for _, row := range results.Results {
 		timePoint, err := time.Parse(timestampFormat, *row[timeColIndex].Value)
-
 		if err != nil {
 			return nil, err
 		}
 
 		for i, j := range numericFieldIndices {
-			numPoint, _ := strconv.ParseFloat(*row[j].Value, 64)
+			numPoint, err := strconv.ParseFloat(*row[j].Value, 64)
+			if err != nil {
+			        return nil, err
+			}
 			timeSeriesSlice[i].Points = append(timeSeriesSlice[i].Points,
 				tsdb.NewTimePoint(null.FloatFrom(numPoint), float64(timePoint.Unix()*1000)),
 			)
