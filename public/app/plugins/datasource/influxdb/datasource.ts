@@ -43,8 +43,15 @@ export default class InfluxDatasource extends DataSourceApi<InfluxQuery, InfluxO
   }
 
   query(options: any) {
-    let timeFilter = this.getTimeFilter(options);
+    let timeSelect: any;
+    timeSelect = this.getTimeFilter(options);
+    let timeFilter = timeSelect.timeFilter;
+
     const scopedVars = options.scopedVars;
+    // 保存起始时间
+    scopedVars.from = { value: timeSelect.from };
+    scopedVars.until = { value: timeSelect.until };
+
     const targets = _.cloneDeep(options.targets);
     const queryTargets: any[] = [];
     let queryModel: InfluxQueryModel;
@@ -133,9 +140,9 @@ export default class InfluxDatasource extends DataSourceApi<InfluxQuery, InfluxO
         message: 'Query missing in annotation definition',
       });
     }
-
-    const timeFilter = this.getTimeFilter({ rangeRaw: options.rangeRaw, timezone: options.timezone });
-    let query = options.annotation.query.replace('$timeFilter', timeFilter);
+    let timeSelect: any;
+    timeSelect = this.getTimeFilter({ rangeRaw: options.rangeRaw, timezone: options.timezone });
+    let query = options.annotation.query.replace('$timeFilter', timeSelect.timeFilter);
     query = this.templateSrv.replace(query, null, 'regex');
 
     return this._seriesQuery(query, options).then((data: any) => {
@@ -227,7 +234,10 @@ export default class InfluxDatasource extends DataSourceApi<InfluxQuery, InfluxO
     }
 
     if (options && options.range) {
-      const timeFilter = this.getTimeFilter({ rangeRaw: options.range, timezone: options.timezone });
+      //const timeFilter = this.getTimeFilter({ rangeRaw: options.range, timezone: options.timezone });
+      let timeSelect: any;
+      timeSelect = this.getTimeFilter({ rangeRaw: options.range, timezone: options.timezone });
+      const timeFilter = timeSelect.timeFilter;
       query = query.replace('$timeFilter', timeFilter);
     }
 
@@ -358,13 +368,25 @@ export default class InfluxDatasource extends DataSourceApi<InfluxQuery, InfluxO
   getTimeFilter(options: any) {
     const from = this.getInfluxTime(options.rangeRaw.from, false, options.timezone);
     const until = this.getInfluxTime(options.rangeRaw.to, true, options.timezone);
+
     const fromIsAbsolute = from[from.length - 1] === 'ms';
 
     if (until === 'now()' && !fromIsAbsolute) {
-      return 'time >= ' + from;
+      //return 'time >= ' + from;
+      return {
+        timeFilter: 'time >= ' + from,
+        from: from,
+        until: until,
+      };
     }
-
-    return 'time >= ' + from + ' and time <= ' + until;
+    //return 'time >= ' + from + ' and time <= ' + until;
+    return {
+      timeFilter: 'time >= ' + from + ' and time <= ' + until,
+      // from: from.replace('ms', ''),
+      // until: until.replace('ms', ''),
+      from: from,
+      until: until,
+    };
   }
 
   getInfluxTime(date: any, roundUp: any, timezone: any) {
