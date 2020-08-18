@@ -1,4 +1,5 @@
-// +build ignore
+// 以下代码会让编译器环境忽略此文件
+//// +build ignore
 
 package main
 
