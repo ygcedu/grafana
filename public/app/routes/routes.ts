@@ -43,6 +43,18 @@ export function setupAngularRoutes($routeProvider: route.IRouteProvider, $locati
         component: importDashboardPage,
       },
     })
+    .when('/casco/:uid/:slug', {
+      template: '<react-container />',
+      pageClass: 'dashboard-solo',
+      routeInfo: DashboardRouteInfo.Normal,
+      reloadOnSearch: false,
+      resolve: {
+        component: () =>
+          SafeDynamicImport(
+            import(/* webpackChunkName: "SoloPanelPage" */ '../features/dashboard/containers/SoloDashboardPage')
+          ),
+      },
+    })
     .when('/d/:uid', {
       template: '<react-container />',
       pageClass: 'page-dashboard',

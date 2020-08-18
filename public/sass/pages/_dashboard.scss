@@ -42,6 +42,13 @@ div.flot-text {
   }
 }
 
+.panels-solo {
+  .panel-menu-toggle,
+  .panel-menu {
+    display: none;
+  }
+}
+
 .panel-height-helper {
   display: block;
   height: 100%;
